@@ -14,6 +14,7 @@ module Aggre
       # @param [Integer]                shop_id     Primary Key магазина.
       #
       def call(offers, shop_id)
+        @logger.info '<UpsertOffersService.call> offers count: %s' % offers.count
         # vals = values offers, shop_id
         # sql  = TPL_SQL % [table, cols * ',', vals, updates]
         # _execute sql
