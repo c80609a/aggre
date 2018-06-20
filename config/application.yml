@@ -1,0 +1,19 @@
+default: &default
+  :deploy:
+    :migrate: 'db/migrate/sql'
+  :xmls:
+   - http://static.ozone.ru/multimedia/yml/facet/div_soft.xml
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  :xmls:
+   - http://static.ozone.ru/multimedia/yml/facet/div_soft.xml
+   - http://www.trenazhery.ru/market2.xml
+   - http://www.radio-liga.ru/yml.php
+   - http://armprodukt.ru/bitrix/catalog_export/yandex.php
