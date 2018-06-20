@@ -29,5 +29,15 @@ module Aggre
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.eager_load_paths << Rails.root.join('lib')
+
   end
 end
+
+Backburner.configure do |config|
+  config.beanstalk_url = "beanstalk://127.0.0.1"
+  config.tube_namespace = "aggre.jobs"
+  config.on_error = lambda { |e| puts 'HEY!! %s' % e }                          # todo-my:: более внятно сообщать об ошибках
+end
+
