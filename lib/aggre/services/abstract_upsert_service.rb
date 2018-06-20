@@ -6,6 +6,11 @@ module Aggre
     #
 
     class AbstractUpsertService
+      include CanExecuteSql
+
+      def initialize(logger = nil)
+        @logger = logger || Logger.new(STDOUT)
+      end
 
       protected
 
@@ -41,13 +46,6 @@ module Aggre
       # @return [String] Какие поля нужно обновить ON DUPLICATE
       def updates
         cols.map { |col| '%s = VALUES(%s)' % [col, col] } * ', '
-      end
-
-      private
-
-      # @param [String] sql
-      def _execute(sql)
-        ActiveRecord::Base.connection.execute sql
       end
 
     end

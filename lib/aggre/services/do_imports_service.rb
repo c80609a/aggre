@@ -8,6 +8,12 @@ module Aggre
     # чтобы не запрашивать файл, который не менялся с последнего момента импорта.
     # Например: curl -s -v -X HEAD http://...xml 2>&1 | grep '^< Last-Modified:'
     #
+    # usage:
+    #
+    # $ rails c
+    # > service = Aggre::Services::DoImportsService.new CONFIG[:xmls]
+    # > service.call
+    #
 
     class DoImportsService
 

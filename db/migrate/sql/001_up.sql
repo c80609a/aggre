@@ -4,6 +4,7 @@ CREATE TABLE categories(
   title       VARCHAR(255),
   updated_at  TIMESTAMP     DEFAULT now(),
   created_at  TIMESTAMP     DEFAULT now(),
-  UNIQUE KEY id(id),
+  shop_id     BIGINT UNSIGNED NOT NULL,
+  UNIQUE KEY shop_and_category (id, shop_id),
   PRIMARY KEY (id)
 );

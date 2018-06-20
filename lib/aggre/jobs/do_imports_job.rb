@@ -68,9 +68,14 @@ module Aggre
       # @param [Nokogiri::XML] xml
       #
       def _process(xml)
+        shop_name  = xml.xpath('//shop/name').text
+        categories = xml.xpath('//categories/category')
+
+        # запишем магазин в базу
+        shop_id    = ::Aggre::Services::RegisterShopByName.new.call shop_name
 
         # обработаем категории
-        ::Aggre::Services::UpsertCategoriesService.new.call xml.xpath('//categories/category')
+        ::Aggre::Services::UpsertCategoriesService.new.call categories, shop_id
 
       end
 
