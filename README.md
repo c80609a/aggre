@@ -49,7 +49,7 @@
 
 Процесс испытания приложения (ЗАПИСЬ в пустую базу) показан на видео:
 
-https://github.com/c80609a/aggre/raw/master/test/videos/screencast.mp4
+(ctrl+s для просмотра или git clone) https://github.com/c80609a/aggre/raw/master/test/videos/screencast.mp4
 
 # TODO
 
