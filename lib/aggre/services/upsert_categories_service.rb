@@ -6,7 +6,7 @@ module Aggre
     #
 
     class UpsertCategoriesService < AbstractUpsertService
-
+      include CanQuoteString
 
       # @param [Nokogiri::XML::NodeSet] categories  Список категорий.
       # @param [Integer]                shop_id     Primary Key магазина.
@@ -40,7 +40,7 @@ module Aggre
           id        = category.attr 'id'
           parent_id = category.attr 'parentId'
           parent_id = parent_id.blank? ? 'NULL' : parent_id
-          title     = category.text
+          title     = _quote category.text.strip
           '(%s,%s,\'%s\',%s)' % [id, parent_id, title, shop_id]
         end * ','
       end

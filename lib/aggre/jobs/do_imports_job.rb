@@ -3,7 +3,14 @@ require 'curb'
 module Aggre
   module Jobs
 
+    #
     # Скачает файл, распарсит и поместит содержимое в базу.
+    #
+    # usage:
+    #
+    #   rails c
+    #   Aggre::Jobs::DoImportsJob.exe CONFIG[:xmls].first
+    #
 
     class DoImportsJob
 
@@ -70,12 +77,16 @@ module Aggre
       def _process(xml)
         shop_name  = xml.xpath('//shop/name').text
         categories = xml.xpath('//categories/category')
+        offers     = xml.xpath('//offers/offer')
 
         # запишем магазин в базу
         shop_id    = ::Aggre::Services::RegisterShopByName.new.call shop_name
 
         # обработаем категории
         ::Aggre::Services::UpsertCategoriesService.new.call categories, shop_id
+
+        # обработаем товары
+        ::Aggre::Services::UpsertOffersService.new.call offers, shop_id
 
       end
 
