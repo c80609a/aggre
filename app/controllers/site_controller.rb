@@ -12,9 +12,9 @@ class SiteController < ApplicationController
     if request.xhr?
       service = Aggre::Services::DoImportsService.new CONFIG[:xmls]
       if service.call
-        render json: { :foo => :bar }
+        render json: { :foo => :bar }           # TODO-my:: слать сообщение + реализовать JS, который его покажет юзеру
       else
-        render json: { :message => :error }
+        render json: { :message => :error }     # TODO-my:: реализовать JS, который покажет ошибку юзеру; ошибку слать русским текстом
       end
     else
       render :imports

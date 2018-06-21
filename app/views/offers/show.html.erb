@@ -1,0 +1,13 @@
+<div class="offer-container">
+  <p><%= @offer.name %></p>
+  <p><img src="<%= @offer.picture %>" style="max-width:300px"/></p>
+  <p>Цена: <%= @offer.price %></p>
+  <p>В наличии: <%= @offer.available %></p>
+  <p><a href="<%= @offer.url %>" target="_blank">Ссылка</a></p>
+  <p>Barcode: <%= @offer.barcode %></p>
+  <p>Производитель: <%=  @offer.vendor %></p>
+  <p>Возрастная группа: <%= @offer.age %></p>
+  <p>Доставка: <%= @offer.delivery %></p>
+  <h4>Описание:</h4>
+  <p><%= @offer.description %></p>
+</div>
