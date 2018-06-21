@@ -27,3 +27,4 @@
 /.idea
 .env
 bin/create_database.rb
+config/*.sphinx.conf

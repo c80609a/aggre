@@ -10,8 +10,11 @@
           p= result_class
           - case result_class
             - when 'Offer'
-              = link_to result.description, result
+              = link_to result.name, result
+              p= '%s...' % result.description[0..150]
             - when 'Category'
-              = result.title
+              p= result.title
+            - else
+              p= result
   - else
     p По вашему запросу ничего не найдено
