@@ -1,0 +1,17 @@
+.results_container
+  - if @results.present?
+    h3 Результаты поиска: #{@query}
+    ul
+      - @results.each do |result|
+        - next unless result
+        - result_class = result.class.to_s
+
+        li
+          p= result_class
+          - case result_class
+            - when 'Offer'
+              = link_to result.description, result
+            - when 'Category'
+              = result.title
+  - else
+    p По вашему запросу ничего не найдено
