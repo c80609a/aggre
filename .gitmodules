@@ -1,0 +1,4 @@
+[submodule "front-end"]
+	path = front-end
+	url = git@github.com:c80609a/aggre_front_ent.git
+	branch = master
